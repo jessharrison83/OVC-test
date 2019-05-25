@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
+import { Tbl, Heading, Data, Row } from '../styles';
 import { fetchUsers } from '../actions';
 
 class Table extends Component {
@@ -11,9 +11,24 @@ componentDidMount() {
 
   render() {
     return (
-      this.props.users.map(user => {
-        return (<h1>{user.name}</h1>)
-})
+      <Tbl>
+        <Row>
+          <Heading>Name</Heading>
+          <Heading>Email</Heading>
+          <Heading>City</Heading>
+          <Heading>Company</Heading>
+        </Row>
+        {this.props.users.map(user => {
+        return (
+        <Row>
+          <Data>{user.name}</Data>
+          <Data>{user.email}</Data>
+          <Data>{user.address.city}</Data>
+          <Data>{user.company.name}</Data>
+        </Row>
+        )
+})}
+</Tbl>
 )
   }   
 }
