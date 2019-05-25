@@ -2,7 +2,7 @@
 
 Code test for OVC Interview
 
-A simple table created using React, Redux, Jest, and React Testing Library. 
+A simple table created using React and Redux. Testing done with Jest and React Testing Library.
 
 **Note**
 
