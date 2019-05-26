@@ -3,7 +3,9 @@ import { render, cleanup } from 'react-testing-library';
 import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 import 'jest-dom/extend-expect';
-import { Tbl, Heading, Data, Row } from '../styles';
+import { Tbl } from '../styles';
+import HeadingRows from '../components/Rows/HeadingRows';
+import DataRows from '../components/Rows/DataRows';
 
 const mockData = [
   {
@@ -53,6 +55,9 @@ const mockData = [
 ];
 
 class TestTable extends Component {
+  state = {
+    headings: ['Name', 'Email', 'City', 'Company']
+  };
   success() {
     this.props.dispatch({ type: 'SUCCESS' });
   }
@@ -63,28 +68,15 @@ class TestTable extends Component {
     return (
       <Tbl>
         <tbody>
-          <Row>
-            <Heading data-testid="name">Name</Heading>
-            <Heading>Email</Heading>
-            <Heading>City</Heading>
-            <Heading>Company</Heading>
-          </Row>
-          {this.props.users.map(user => {
-            return (
-              <Row key={user.id}>
-                <Data className="dataRows">{user.name}</Data>
-                <Data>{user.email}</Data>
-                <Data>{user.address.city}</Data>
-                <Data>{user.company.name}</Data>
-              </Row>
-            );
-          })}
+          <HeadingRows headings={this.state.headings} />
+          <DataRows users={this.props.users} />
         </tbody>
       </Tbl>
     );
   }
 }
 const ConnectedTable = connect(state => ({ users: state.users }))(TestTable);
+
 afterEach(cleanup);
 
 function reducer(state = { users: [] }, action) {
@@ -108,10 +100,10 @@ function renderWithRedux(
 }
 
 describe('the table component', () => {
-  const { getByTestId } = renderWithRedux(<ConnectedTable />, {
+  const tbl = renderWithRedux(<ConnectedTable />, {
     initialState: { users: mockData }
   });
-  const headerTest = getByTestId('name');
+  const headerTest = document.querySelector('.headingRows:first-child');
   const dataTest = document.querySelector('.dataRows:first-child');
   test('renders the appropriate headers', () => {
     expect(headerTest).toHaveTextContent('Name');

@@ -5,7 +5,11 @@ const HeadingRows = props => {
   return (
     <Row>
       {props.headings.map(heading => {
-        return <Heading>{heading}</Heading>;
+        return (
+          <Heading className="headingRows" key={heading}>
+            {heading}
+          </Heading>
+        );
       })}
     </Row>
   );
