@@ -6,6 +6,6 @@ A simple table created using React and Redux. Testing done with Jest and React T
 
 **Note**
 
-I utilized Redux in this project to showcase my skills, but normally I would not use Redux for a project of this size.
-Because the data is only being used in one component, a component-level state would have been sufficient. However, because
-the boilerplate is already complete for Redux, it will be easier to expand this project if necessary.
+When planning projects, I typically evaluate the necessity of using Redux based on the anticipated scale and complexity of an 
+app. Typically, due to this being a single component application, I would make simple use component-level state; however, to 
+demonstrate my experience with Redux, it was included in this project, and will make future expansion on this project easier.
