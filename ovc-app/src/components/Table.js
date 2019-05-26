@@ -17,7 +17,7 @@ class Table extends Component {
     if (this.props.loading) {
       return <Loader>Fetching users... </Loader>;
     } else if (this.props.error) {
-      return <Loader>Oops! Cannot find users. :(</Loader>;
+      return <Loader>`Oops! Cannot find users. :(`</Loader>;
     } else {
       return (
         <Tbl>
