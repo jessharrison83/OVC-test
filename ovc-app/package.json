@@ -13,10 +13,14 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0"
   },
+  "devDependencies": {
+    "jest-dom": "^3.4.0",
+    "react-testing-library": "^7.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

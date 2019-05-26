@@ -1,11 +1,9 @@
 import React from 'react';
 import { Table } from './components';
-import "./styles/App.css";
+import './styles/App.css';
 
 function App() {
-  return (
-    <Table />
-  );
+  return <Table />;
 }
 
 export default App;
